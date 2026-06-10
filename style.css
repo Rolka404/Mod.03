@@ -87,20 +87,23 @@ body {
    4. ROZWIJANA LISTA PODMENU (DROPDOWN)
    ========================================================================== */
 .roz-list {
-    display: none;                  /* Domyślnie ukrywa podmenu na start */
+    display: none;                  /* Domyślnie ukryte podmenu */
     position: absolute;
     top: 100%;                      /* Rozwija listę bezpośrednio pod dolną krawędzią przycisku */
     left: 50%;
     transform: translateX(-50%);    /* Idealnie centruje wysuwane okienko względem ikony */
     
-    background-color: #ffffff;      /* Białe tło okienka, żeby napisy były czytelne na szarym pasku */
+    background-color: #ffffff;      
     border: 1px solid #cccccc;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.15); /* Moderny, delikatny cień pod okienkiem */
-    padding: 8px 0;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.15); 
     list-style: none;
-    min-width: 240px;               /* Szerokość dopasowana do długich haseł (np. Modelowanie form...) */
-    margin-top: 8px;                /* Mały odstęp okienka od paska nawigacji */
-    z-index: 9999;                  /* Gwarantuje, że podmenu wyświetli się nad całą resztą strony */
+    min-width: 240px;               
+    z-index: 9999;                  
+
+    /* --- POPRAWKA TUTAJ: --- */
+    margin-top: 0;                  /* USUWAMY: ten margines tworzył pustą przerwę, przez którą menu znikało */
+    padding-top: 10px;              /* DODAJEMY: przeźroczysty obszar na górze - myszka go nie zgubi */
+    padding-bottom: 8px;            
 }
 
 /* GŁÓWNY MECHANIZM: Pokazuje listę .roz-list, gdy najedziemy myszką na pudełko .roz-men */
