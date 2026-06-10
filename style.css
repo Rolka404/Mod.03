@@ -12,11 +12,12 @@ body {
 
   /* --- USTAWIENIA PASKA NAWIGACYJNEGO. --- */
 .pasnav {
-    background-color: #d3d3d3; /* Kolor tła paska */
+    background-color: #d3d3d3;
     border-bottom: 1px solid #e0e0e0;
     width: 100%;
     padding: 0 16px;
-    position: static; /* POPRAWIONO: Pasek przewija się naturalnie i znika */
+    position: static; /* Sprawia, że pasek zostaje na górze podczas przewijania */
+    top: 0;
     z-index: 100;
 }
 
@@ -27,26 +28,23 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 68px; /* POPRAWIONO: Zwiększono z 52px, aby zmieścić pionowe przyciski z podpisami */
+    height: 52px; 
 }
 
-/* Wygląd Twojego wybranego logo po lewej stronie */
+  /* Wygląd Twojego wybranego logo po lewej stronie */
 .logo-icon {
-    height: 45px;                   
+    height: 45px;                   /* Bezpieczna wysokość dla logo, szerokość dopasuje się sama */
     width: auto;
-    display: inline-block; /* POPRAWIONO: Ułatwia lepsze centrowanie w pionie */
+    display: block;
 }
 
 /* Kontener na całe menu Twoich 6 ilustracji */
 .nav-list {
     display: flex;
     align-items: center;
-    gap: 15px; /* DODANO: Odstępy między ikonami, żeby nie były sklejone */
     height: 100%;
-    margin: 0;
-    padding: 0;
-    list-style: none;
 }
+
 
 
 /* Każde pojedyncze pudełko <li> trzymające przycisk i jego ukryte podmenu */
