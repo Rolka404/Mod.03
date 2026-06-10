@@ -10,13 +10,20 @@ body {
     background-position: center;  
     background-repeat: no-repeat;
 
+  /* Wygląd Twojego wybranego logo po lewej stronie */
+.logo-icon {
+    height: 45px;                   /* Bezpieczna wysokość dla logo, szerokość dopasuje się sama */
+    width: auto;
+    display: block;
+}
+
   /* --- USTAWIENIA PASKA NAWIGACYJNEGO. --- */
 .pasnav {
-    background-color: #d3d3d3;
+     background-color: #d3d3d3;
     border-bottom: 1px solid #e0e0e0;
     width: 100%;
     padding: 0 16px;
-    position: static; /* Sprawia, że pasek zostaje na górze podczas przewijania */
+    position: sticky; /* Sprawia, że pasek zostaje na górze podczas przewijania */
     top: 0;
     z-index: 100;
 }
@@ -31,12 +38,7 @@ body {
     height: 52px; 
 }
 
-  /* Wygląd Twojego wybranego logo po lewej stronie */
-.logo-icon {
-    height: 45px;                   /* Bezpieczna wysokość dla logo, szerokość dopasuje się sama */
-    width: auto;
-    display: block;
-}
+
 
 /* Kontener na całe menu Twoich 6 ilustracji */
 .nav-list {
@@ -50,37 +52,48 @@ body {
 /* Każde pojedyncze pudełko <li> trzymające przycisk i jego ukryte podmenu */
 .roz-men {
     position: relative;             /* Ważne: punkt odniesienia, by podmenu rozwijało się pod ikoną */
-}
+    display: flex;
+    align-items: center;
+    height: 100%;
+} 
 
 /* ==========================================================================
    3. PRZYCISKI Z IKONAMI I NAPISAMI (UKŁAD PIONOWY)
    ========================================================================== */
 .but-nav {
-    background: transparent;        /* Nie rusza tła Twoich ikon, usuwa szary boks systemowy */
-    border: none;                   /* Usuwa domyślną systemową ramkę przycisku */
-    padding: 4px 8px;
-    cursor: pointer;                /* Zmienia kursor na "łapkę" po najechaniu na ikonę */
-    
-    display: flex;
-    flex-direction: column;         /* WYMUSZA UKŁAD PIONOWY: Ikona na górze, tekst na dole */
-    align-items: center;            /* Środkuje tekst idealnie pod osią pionową ikony */
-    gap: 2px;                       /* Bardzo mały odstęp pionowy między obrazkiem a tekstem */
+     display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    justify-content: center;
+    text-decoration: none;  
+    color: #666666;         
+    min-width: 110px; /* Zwiększona szerokość, aby zmieścić długie podpisy */      
+    height: 100%;
+    padding: 0 8px; 
+    transition: color 0.2s ease;
+}
+
+  /* Efekt po najechaniu myszką na przycisk w menu */
+.but-nav:hover {
+    color: #191919;
 }
 
 /* Styl dla samych obrazków w menu */
 .but-icon {
-    width: 28px;                    /* Rozmiar ikony dopasowany do zrzutu ekranu */
-    height: 28px;
-    object-fit: contain;            /* Zapobiega zniekształceniu proporcji grafik */
+     width: 24px;
+    height: 24px;
+    object-fit: contain; /* Gwarantuje brak zniekształceń */
+    margin-bottom: 4px;  /* Odstęp między ilustracją a tekstem pod nią */
+    display: block;
 }
 
 /* Styl dla napisów pod ikonami (np. Konstrukcja, Szycie) */
 .but-napis {
-    font-size: 11px;                /* Mała, zgrabna czcionka ze zdjęcia */
-    color: #1a1a1a;                 /* Bardzo ciemny, niemal czarny kolor tekstu */
-    font-family: sans-serif;        /* Prosty, czytelny krój pisma */
+     font-size: 11px;        
+    font-weight: 400;
     text-align: center;
-    font-weight: 500;
+    line-height: 1.3;       
+    word-wrap: break-word;  /* Bezpieczne łamanie tekstu, jeśli słowo jest bardzo długie */
 }
 
 /* ==========================================================================
