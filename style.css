@@ -9,3 +9,96 @@ body {
     background-size: cover;       
     background-position: center;  
     background-repeat: no-repeat;
+
+  /* --- USTAWIENIA PASKA NAWIGACYJNEGO. --- */
+.pasnav {
+    display: flex;
+    justify-content: space-between; /* Logo po lewej, menu po prawej */
+    align-items: center;            /* Wyrównanie w pionie */
+    padding: 10px 40px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.logo-icon {
+    height: 50px; 
+    width: auto;
+}
+
+/* --- GŁÓWNA LISTA MENU --- */
+.nav-list {
+    display: flex;
+    gap: 30px;              /* Odstępy między głównymi przyciskami */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.roz-men {
+    position: relative;     /* Punkt odniesienia dla rozwijanej listy */
+}
+
+/* --- WYGLĄD PRZYCISKÓW (IKONA + TEKST POD SPODEM) --- */
+.but-nav {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    
+    display: flex;
+    flex-direction: column; /* Ustawia ikonę nad napisem */
+    align-items: center;    /* Środkuje napis pod ikoną */
+    gap: 6px;               /* Odstęp pionowy między grafiką a tekstem */
+}
+
+.but-icon {
+    width: 32px;            /* Rozmiar ikon */
+    height: 32px;
+    object-fit: contain;
+}
+
+.but-napis {
+    font-size: 14px;
+    color: #333333;
+    font-weight: 500;
+}
+
+/* --- ROZWIJANE PODMENU --- */
+.roz-list {
+    display: none;          /* Ukryte */
+    position: absolute;
+    top: 100%;              /* Pojawia się dokładnie pod przyciskiem */
+    left: 50%;
+    transform: translateX(-50%); /* Wyśrodkowanie listy pod przyciskiem */
+    
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 10px 0;
+    list-style: none;
+    min-width: 240px;       /* Szerokość dostosowana do długich nazw */
+    z-index: 999;           /* Wyciąga menu na sam wierzch strony */
+    margin-top: 10px;       /* Margines pod przyciskiem */
+}
+
+/* Lista po najechaniu myszką */
+.roz-men:hover .roz-list {
+    display: block;
+}
+
+/* Wygląd pojedynczych linków w podmenu */
+.roz-list a {
+    display: block;
+    padding: 10px 20px;
+    color: #555555;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+/* Efekt najechania myszką na podpunkt */
+.roz-list a:hover {
+    background-color: #f5f5f5;
+    color: #000000;
+}
