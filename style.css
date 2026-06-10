@@ -13,92 +13,113 @@ body {
   /* --- USTAWIENIA PASKA NAWIGACYJNEGO. --- */
 .pasnav {
     display: flex;
-    justify-content: space-between; /* Logo po lewej, menu po prawej */
-    align-items: center;            /* Wyrównanie w pionie */
-    padding: 10px 40px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    justify-content: space-between; /* Logo po lewej, menu po prawej stronie */
+    align-items: center;            /* Wyrównanie logo i przycisków w pionie */
+    
+    /* 8px od góry i dołu, 60px od boków ekranu (odsuwa menu od krawędzi monitora) */
+    padding: 8px 60px;             
+    
+    background-color: #b3b3b3;      /* Dokładny kolor paska z Twojego zrzutu ekranu */
+    border-bottom: 1px solid #999999; /* Delikatna ciemniejsza kreska pod paskiem */
+    width: 100%;
+    
+    /* Pasek nie jest przyklejony – przewija się naturalnie razem ze stroną */
+    position: static; 
+    box-sizing: border-box;         /* Zapobiega rozszerzaniu paska poza ekran przez padding */
 }
 
+/* Wygląd Twojego wybranego logo po lewej stronie */
 .logo-icon {
-    height: 50px; 
+    height: 45px;                   /* Bezpieczna wysokość dla logo, szerokość dopasuje się sama */
     width: auto;
+    display: block;
 }
 
-/* --- GŁÓWNA LISTA MENU --- */
+/* ==========================================================================
+   2. GŁÓWNA LISTA ELEMENTÓW MENU (IKONY W POZIOMIE)
+   ========================================================================== */
 .nav-list {
     display: flex;
-    gap: 30px;              /* Odstępy między głównymi przyciskami */
-    list-style: none;
+    gap: 15px;                      /* Ciasny rozstaw przycisków, dokładnie jak na wzorze */
+    list-style: none;               /* Usuwa domyślne kropki z listy HTML */
     margin: 0;
     padding: 0;
 }
 
+/* Każde pojedyncze pudełko <li> trzymające przycisk i jego ukryte podmenu */
 .roz-men {
-    position: relative;     /* Punkt odniesienia dla rozwijanej listy */
+    position: relative;             /* Ważne: punkt odniesienia, by podmenu rozwijało się pod ikoną */
 }
 
-/* --- WYGLĄD PRZYCISKÓW (IKONA + TEKST POD SPODEM) --- */
+/* ==========================================================================
+   3. PRZYCISKI Z IKONAMI I NAPISAMI (UKŁAD PIONOWY)
+   ========================================================================== */
 .but-nav {
-    background: none;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
+    background: transparent;        /* Nie rusza tła Twoich ikon, usuwa szary boks systemowy */
+    border: none;                   /* Usuwa domyślną systemową ramkę przycisku */
+    padding: 4px 8px;
+    cursor: pointer;                /* Zmienia kursor na "łapkę" po najechaniu na ikonę */
     
     display: flex;
-    flex-direction: column; /* Ustawia ikonę nad napisem */
-    align-items: center;    /* Środkuje napis pod ikoną */
-    gap: 6px;               /* Odstęp pionowy między grafiką a tekstem */
+    flex-direction: column;         /* WYMUSZA UKŁAD PIONOWY: Ikona na górze, tekst na dole */
+    align-items: center;            /* Środkuje tekst idealnie pod osią pionową ikony */
+    gap: 2px;                       /* Bardzo mały odstęp pionowy między obrazkiem a tekstem */
 }
 
+/* Styl dla samych obrazków w menu */
 .but-icon {
-    width: 32px;            /* Rozmiar ikon */
-    height: 32px;
-    object-fit: contain;
+    width: 28px;                    /* Rozmiar ikony dopasowany do zrzutu ekranu */
+    height: 28px;
+    object-fit: contain;            /* Zapobiega zniekształceniu proporcji grafik */
 }
 
+/* Styl dla napisów pod ikonami (np. Konstrukcja, Szycie) */
 .but-napis {
-    font-size: 14px;
-    color: #333333;
+    font-size: 11px;                /* Mała, zgrabna czcionka ze zdjęcia */
+    color: #1a1a1a;                 /* Bardzo ciemny, niemal czarny kolor tekstu */
+    font-family: sans-serif;        /* Prosty, czytelny krój pisma */
+    text-align: center;
     font-weight: 500;
 }
 
-/* --- ROZWIJANE PODMENU --- */
+/* ==========================================================================
+   4. ROZWIJANA LISTA PODMENU (DROPDOWN)
+   ========================================================================== */
 .roz-list {
-    display: none;          /* Ukryte */
+    display: none;                  /* Domyślnie ukrywa podmenu na start */
     position: absolute;
-    top: 100%;              /* Pojawia się dokładnie pod przyciskiem */
+    top: 100%;                      /* Rozwija listę bezpośrednio pod dolną krawędzią przycisku */
     left: 50%;
-    transform: translateX(-50%); /* Wyśrodkowanie listy pod przyciskiem */
+    transform: translateX(-50%);    /* Idealnie centruje wysuwane okienko względem ikony */
     
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: 10px 0;
+    background-color: #ffffff;      /* Białe tło okienka, żeby napisy były czytelne na szarym pasku */
+    border: 1px solid #cccccc;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.15); /* Moderny, delikatny cień pod okienkiem */
+    padding: 8px 0;
     list-style: none;
-    min-width: 240px;       /* Szerokość dostosowana do długich nazw */
-    z-index: 999;           /* Wyciąga menu na sam wierzch strony */
-    margin-top: 10px;       /* Margines pod przyciskiem */
+    min-width: 240px;               /* Szerokość dopasowana do długich haseł (np. Modelowanie form...) */
+    margin-top: 8px;                /* Mały odstęp okienka od paska nawigacji */
+    z-index: 9999;                  /* Gwarantuje, że podmenu wyświetli się nad całą resztą strony */
 }
 
-/* Lista po najechaniu myszką */
+/* GŁÓWNY MECHANIZM: Pokazuje listę .roz-list, gdy najedziemy myszką na pudełko .roz-men */
 .roz-men:hover .roz-list {
     display: block;
 }
 
-/* Wygląd pojedynczych linków w podmenu */
+/* Styl dla pojedynczych linków wewnątrz podmenu (np. Antropometria) */
 .roz-list a {
     display: block;
-    padding: 10px 20px;
-    color: #555555;
-    text-decoration: none;
-    font-size: 14px;
-    transition: background 0.2s;
+    padding: 8px 20px;
+    color: #444444;                 /* Szary, stonowany kolor tekstu wewnątrz listy */
+    text-decoration: none;          /* Usuwa domyślne podkreślenie linków */
+    font-size: 13px;
+    font-family: sans-serif;
+    transition: background-color 0.2s, color 0.2s; /* Płynne przejście koloru po najechaniu */
 }
 
-/* Efekt najechania myszką na podpunkt */
+/* Efekt wizualny po najechaniu myszką na dany podpunkt w liście */
 .roz-list a:hover {
-    background-color: #f5f5f5;
-    color: #000000;
+    background-color: #e9e9e9;      /* Jasnoszare tło podświetlające wybrany element */
+    color: #000000;                 /* Zmiana tekstu na głęboką czerń */
 }
