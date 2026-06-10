@@ -12,39 +12,42 @@ body {
 
   /* --- USTAWIENIA PASKA NAWIGACYJNEGO. --- */
 .pasnav {
-    display: flex;
-    justify-content: space-between; /* Logo po lewej, menu po prawej stronie */
-    align-items: center;            /* Wyrównanie logo i przycisków w pionie */
-    
-    /* 8px od góry i dołu, 60px od boków ekranu (odsuwa menu od krawędzi monitora) */
-    padding: 8px 60px;             
-    
-    background-color: #b3b3b3;      /* Dokładny kolor paska z Twojego zrzutu ekranu */
-    border-bottom: 1px solid #999999; /* Delikatna ciemniejsza kreska pod paskiem */
+    background-color: #d3d3d3; /* Kolor tła paska */
+    border-bottom: 1px solid #e0e0e0;
     width: 100%;
-    
-    /* Pasek nie jest przyklejony – przewija się naturalnie razem ze stroną */
-    position: static; 
-    box-sizing: border-box;         /* Zapobiega rozszerzaniu paska poza ekran przez padding */
+    padding: 0 16px;
+    position: static; /* POPRAWIONO: Pasek przewija się naturalnie i znika */
+    z-index: 100;
+}
+
+/* Wewnętrzny kontener trzymający strukturę w linii i na środku ekranu */
+.pasnav-container {
+    max-width: 1128px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 68px; /* POPRAWIONO: Zwiększono z 52px, aby zmieścić pionowe przyciski z podpisami */
 }
 
 /* Wygląd Twojego wybranego logo po lewej stronie */
 .logo-icon {
-    height: 45px;                   /* Bezpieczna wysokość dla logo, szerokość dopasuje się sama */
+    height: 45px;                   
     width: auto;
-    display: block;
+    display: inline-block; /* POPRAWIONO: Ułatwia lepsze centrowanie w pionie */
 }
 
-/* ==========================================================================
-   2. GŁÓWNA LISTA ELEMENTÓW MENU (IKONY W POZIOMIE)
-   ========================================================================== */
+/* Kontener na całe menu Twoich 6 ilustracji */
 .nav-list {
     display: flex;
-    gap: 15px;                      /* Ciasny rozstaw przycisków, dokładnie jak na wzorze */
-    list-style: none;               /* Usuwa domyślne kropki z listy HTML */
+    align-items: center;
+    gap: 15px; /* DODANO: Odstępy między ikonami, żeby nie były sklejone */
+    height: 100%;
     margin: 0;
     padding: 0;
+    list-style: none;
 }
+
 
 /* Każde pojedyncze pudełko <li> trzymające przycisk i jego ukryte podmenu */
 .roz-men {
