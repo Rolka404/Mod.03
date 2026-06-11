@@ -167,4 +167,61 @@ body {
 .h2 {
   padding: 20px;
 }
-  
+
+
+
+/* SUROWCE WŁÓKIENNICZE */
+/* Podstawowe style tabeli */
+.wlokna-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+/* Wspólne style dla nagłówków i komórek */
+.wlokna-table th, 
+.wlokna-table td {
+  border: 1px solid #555555;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Układ list wewnątrz komórek */
+.wlokna-table ul {
+  list-style-type: square; /* Kwadratowe wypunktowanie */
+  margin: 0;
+  padding-left: 15px;
+  text-align: left; /* Wyrównanie tekstu listy do lewej */
+}
+
+/* Wyrównanie zawartości azbestu do góry */
+.val-top {
+  vertical-align: top;
+}
+
+/* Kolory tła poszczególnych sekcji */
+.row-main-header th {
+  background-color: #b3b3b3;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.row-sub-header-1 th {
+  background-color: #e6e6e6;
+}
+
+/* Kolory główne kategorii */
+.bg-roslinne { background-color: #97cb8a; }
+.bg-zwierzece { background-color: #e5d77d; }
+.bg-mineralne { background-color: #8daed5; }
+
+/* Jasne odcienie dla podkategorii i zawartości */
+.bg-roslinne-light { background-color: #c7e7be; }
+.bg-zwierzece-light { background-color: #f3ebbe; }
+.bg-mineralne-light { background-color: #b7cde6; }
+
+/* Kolor dla mniej widocznego tekstu (np. kokos) */
+.text-muted {
+  color: #888888;
+}
