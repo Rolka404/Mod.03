@@ -71,6 +71,8 @@ body {
     height: 100%;
     padding: 0 8px; 
     transition: color 0.2s ease;
+    border: none;
+    
 }
 
   /* Efekt po najechaniu myszką na przycisk w menu */
