@@ -145,6 +145,16 @@ body {
     color: #000000;                 /* Zmiana tekstu na głęboką czerń */
 }
 
-.h1 {
+.h3 {
   text-align: center;
 }
+
+.p-h3 {
+  text-align: center;
+}
+
+.h1 {
+  text-align: center;
+
+.p-h1 {
+  text-align: center;
